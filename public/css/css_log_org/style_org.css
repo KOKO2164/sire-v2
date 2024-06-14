@@ -1,0 +1,151 @@
+body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    min-height: 100vh;
+    background-color: #fff;
+    overflow: hidden;
+    background-image: url(img/public5.jpg);
+    background-size: 1544px 715px;
+    background-repeat: no-repeat;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    max-width: 20rem;
+    width: 100%;
+    flex-wrap: wrap;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8%;
+    color : #000;
+    font-family: "Be Vietnam Pro", sans-serif;
+    margin-left: 100px;
+}
+
+.title {
+    color: #7A3065;
+    text-align: center;
+    margin: 20px;
+    font-size: 13px;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+.classinput{
+    margin: 0px 30px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 5px 0px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #7A3065;
+    transition: border-bottom 0.1s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid #7A3065;
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+input::placeholder {
+    color: #7A3065;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 20px;
+    margin: 0px 25px;
+}
+
+button {
+    background-color: #7A3065;
+    color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+button:hover {
+    background-color: #640f4f;
+}
+
+.btn_registro_c{
+    background-color: #fff;
+    color: #7A3065;
+    border: 1px solid #7A3065;
+}
+
+.btn_registro_c:hover{
+    background-color: #7A3065;
+    color: #fff;
+}
+
+.btn_iniciar_i{
+    background-color: #fff;
+    color: #7A3065;
+    border: 1px solid #7A3065;
+}
+
+.btn_iniciar_i:hover{
+    background-color: #7A3065;
+    color: #fff;
+}
+
+
+.terms {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.terms a {
+    color: #7A3065;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+.cont2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    gap: 25px;
+}
+
+.cont2 a{
+    color: #7A3065;
+    text-decoration: none;
+}
