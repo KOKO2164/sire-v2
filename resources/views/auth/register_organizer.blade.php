@@ -7,19 +7,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style_org.css">
+    <link rel="stylesheet" href="{{ asset('css/auth/style_org.css') }}">
 </head>
 <body>
     <div class="container">
-        <form>
+        <form action="{{ route('storeOrganizer') }}" method="POST">
+            @csrf
             <div class="title">
-                <img src="{{public_path('img/img_logo2.png')}}" alt="Logo">
+                <img src="{{ asset('img/img_logo2.png') }}" alt="Logo">
                 <h2>CREAR CUENTA</h2>
             </div>
             <div class="classinput">
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-                <input type="email" id="email" name="email"  autocomplete="off" placeholder="Email" required>
-                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+                <input type="text" id="name" name="name" placeholder="Nombre" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </div>
             <div class="terms">
                 <input type="checkbox" id="acepto-terminos" name="acepto-terminos" required>
@@ -27,7 +28,7 @@
             </div>
             <div class="btns">
                 <button type="submit"class="btn_registro_c">REGISTRARSE</button>
-                <button type="submit" class="btn_iniciar_c" id="btn_iniciar">INICIAR SESIÓN</button>
+                <button type="button" class="btn_iniciar_c" id="btn_iniciar">INICIAR SESIÓN</button>
             </div>
         </form>
     </div>

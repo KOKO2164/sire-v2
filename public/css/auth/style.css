@@ -8,8 +8,8 @@ body {
     min-height: 100vh;
     background-color: #fff;
     overflow: hidden;
-    background-image: url(img/fondo5.png);
-    background-size: 1544px 715px;
+    background-image: url(../../img/fondo5.png);
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -22,7 +22,7 @@ body {
     flex-wrap: wrap;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
     padding: 20px;
     border-radius: 8%;
     color : #000;

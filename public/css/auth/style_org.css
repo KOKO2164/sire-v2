@@ -8,15 +8,15 @@ body {
     min-height: 100vh;
     background-color: #fff;
     overflow: hidden;
-    background-image: url(img/public5.jpg);
-    background-size: 1544px 715px;
+    background-image: url(../../img/public.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    gap: .25rem;
+    gap: 1.25rem;
     max-width: 20rem;
     width: 100%;
     flex-wrap: wrap;
