@@ -1,0 +1,82 @@
+body{
+    background-color: #d04141;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    height: 100vh;
+    overflow: hidden;
+}
+.container_center, .container_center2{
+    height: 22vh;
+    width: 25%;
+    background-color: #fff;
+    max-width: 30rem;
+    flex-wrap: wrap;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 16px; 
+    border-radius: 30px;
+    color : #000;
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+.container_center2{
+    height: 30vh;
+}
+
+.title {
+    color: #d04141;
+    text-align: center;
+    margin: 10px;
+    font-size: 12px;
+}
+.title h2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.classinput{
+    margin: 0px 40px;
+}
+
+input[type="email"], input[type="password"]{
+    width: 300px;
+    padding: 5px 0px;
+    margin: 10px 0px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #d04141;
+    transition: border-bottom 0.1s;
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+input[type="email"]:focus, input[type="password"]:focus{
+    border-bottom: 2px solid #d04141;
+}
+
+input::placeholder {
+    color: #d04141;
+}
+
+.btns{
+    padding-top: 10px;
+    margin: 0px 80px;
+}
+
+button {
+    background-color: #d04141;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+button:hover {
+    background-color: #9e2a2a;
+}
