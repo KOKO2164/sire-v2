@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/registerClient', [RegisterController::class, 'registerUserClient'])->name('registerClient');
+Route::get('/registerOrganizer', [RegisterController::class, 'registerUserOrganizer'])->name('registerOrganizer');
