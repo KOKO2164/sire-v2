@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style_org.css">
+    <link rel="stylesheet" href="{{asset('css/css_log_org/style_org.css')}}">
 </head>
 <body>
     <div class="container">
         <form>
             <div class="title">
-                <img src="{{public_path('img/img_logo2.png')}}" alt="Logo">
+                <img src="{{asset('img/img_logo2.png')}}" alt="Logo">
                 <h2>CREAR CUENTA</h2>
             </div>
             <div class="classinput">
