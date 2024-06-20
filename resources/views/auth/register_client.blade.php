@@ -1,17 +1,10 @@
-    <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Cuenta</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/auth/style.css')}}">
-</head>
-<body>
+@extends('layouts.app')
+@section('title')
+    <title>Registrarse</title>
+@endsection
+@section('content')
     <div class="container">
-        <form action="{{ route('storeClient') }}" method="POST">
+        <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="title">
                 <img src="{{asset('img/img_logo.png')}}" alt="Logo">
@@ -30,16 +23,17 @@
                 @error('password')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+                <input type="text" name="role" value="2" hidden>
             </div>
             <div class="terms">
                 <input type="checkbox" id="acepto-terminos" name="acepto-terminos" required>
                 <label for="acepto-terminos">Acepto los <a href="#">Términos y Condiciones</a></label>
+                <p><a href="{{ route('show-register', 'organizer') }}">Crear cuenta de organizador</a></p>
             </div>
             <div class="btns">
                 <button type="submit" class="btn_registro_c">REGISTRARSE</button>
-                <button type="button" class="btn_iniciar_c" id="btn_iniciar">INICIAR SESIÓN</button>
+                <a href="" class="btn_iniciar_c" id="btn_iniciar">INICIAR SESIÓN</a>
             </div>
         </form>
     </div>
-</body>
-</html>
+@endsection

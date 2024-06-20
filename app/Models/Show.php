@@ -29,4 +29,9 @@ class Show extends Model
     {
         return $this->belongsTo(ShowStatus::class);
     }
+
+    public function seatAreaPrices()
+    {
+        return $this->hasMany(SeatAreaPrice::class);
+    }
 }

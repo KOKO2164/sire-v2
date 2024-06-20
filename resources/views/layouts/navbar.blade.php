@@ -1,13 +1,13 @@
 <header class="header">
     <div class="menu_wrapper">
         <div class="menu_bar">
-            <a href="nav.html" title="Home" aria-label="home" class="logo">
+            <a href="{{ route('home') }}" title="Home" aria-label="home" class="logo">
                 <img src="{{ asset('img/siret_home.png') }}" alt="siret_home">
             </a>
             <nav>
                 <ul class="nav hide">
                     <li>
-                        <a href="#inicio" title="Inicio">
+                        <a href="{{ route('home') }}" title="Inicio">
                             Inicio
                         </a>
                     </li>
@@ -29,13 +29,22 @@
                 </ul>
             </nav>
         </div>
-        <div class="action-buttons hide">
-            <a href="#" title="" class="primary">
-                Iniciar Sesión
-            </a>
-            <a href="#" title="" class="secondary">
-                Registrarse
-            </a>
-        </div>
+        @if (Auth::check())
+            <p>{{ Auth::user()->name }}</p>
+            <div class="action-buttons">
+                <a href="{{ route('logout') }}" title="" class="primary">
+                    Cerrar Sesión
+                </a>
+            </div>
+        @else
+            <div class="action-buttons hide">
+                <a href="{{ route('show-login') }}" title="" class="primary">
+                    Iniciar Sesión
+                </a>
+                <a href="{{ route('show-register', 'client') }}" title="" class="secondary">
+                    Registrarse
+                </a>
+            </div>
+        @endif
     </div>
 </header>

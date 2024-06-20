@@ -1,10 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.auth')
+@section('title')
+    <title>Iniciar Sesión</title>
+@endsection
 @section('content')
     <div class="container">
-        <form action="{{ route('enterClient') }}" method="POST">
+        <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="title">
-                <img src="{{ asset('img/img_logo.png') }}" alt="Logo">
+                <img src="{{ asset('img/img_logo.png') }}" alt="Logo" id="user">
                 <h2>INICIAR SESIÓN</h2>
             </div>
             <div class="classinput">

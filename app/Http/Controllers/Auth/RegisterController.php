@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Factories\ClientUserFactory;
+use App\Factories\OrganizerUserFactory;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
@@ -11,54 +15,41 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    public function registerUserClient()
+    public function showRegisterForm($role)
     {
-        return view('auth.register_client');
+        return view("auth.register_{$role}");
     }
 
-    public function storeUserClient(Request $request)
+    public function showLoginForm()
     {
-        $request->validate([
-            'name' => 'required|string|max:100',
-            'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'string|max:20|unique:users',
-            'password' => 'required|string|min:8',
-        ]);
+        return view('auth.login');
+    }
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
-            'role_id' => UserRole::CLIENT
-        ]);
+    public function register(UserRequest $request)
+    {
+        $user = $this->getUserFactory($request->role)->createUser($request->all());
 
         Auth::login($user);
 
         return redirect('/');
     }
 
-    public function loginUserClient()
+    public function login(LoginRequest $request)
     {
-        return view('auth.login_client');
-    }
-
-    public function enterUserClient(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-
         if (Auth::attempt($request->only('email', 'password'))) {
-            if (Auth::user()->role_id === UserRole::CLIENT) {
-                return redirect('/');
-            }
+            return $this->handleUserRedirect(Auth::user());
         }
 
         return back()->withErrors([
-            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
+            'error' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
         ]);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/');
     }
 
     public function resetPassword()
@@ -75,15 +66,10 @@ class RegisterController extends Controller
         return view('auth.new_pass_client', ['email' => $request->email]);
     }
 
-    public function updatePassword(Request $request)
+    public function updatePassword(LoginRequest $request)
     {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string|min:8',
-        ]);
-
         $user = User::where('email', $request->email)->first();
-
+        
         if ($user) {
             $user->password = Hash::make($request->password);
             $user->save();
@@ -92,57 +78,26 @@ class RegisterController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'El correo electrónico proporcionado no coincide con nuestros registros.',
+            'error' => 'El correo electrónico proporcionado no coincide con nuestros registros.',
         ]);
     }
 
-    public function registerUserOrganizer()
+    public function handleUserRedirect($user)
     {
-        return view('auth.register_organizer');
-    }
-
-    public function storeUserOrganizer(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:100',
-            'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'string|max:20|unique:users',
-            'password' => 'required|string|min:8',
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
-            'role_id' => UserRole::ORGANIZER
-        ]);
-
-        Auth::login($user);
-
-        return redirect('/');
-    }
-
-    public function loginUserOrganizer()
-    {
-        return view('auth.login_organizer');
-    }
-
-    public function enterUserOrganizer(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-
-        if (Auth::attempt($request->only('email', 'password'))) {
-            if (Auth::user()->role_id === UserRole::ORGANIZER) {
-                return redirect('/');
-            }
+        if($user->role_id === UserRole::CLIENT || $user->role_id === UserRole::ORGANIZER) {
+            return redirect('/');
         }
 
-        return back()->withErrors([
-            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
-        ]);
+        return back()->with(['error' => 'No tienes permisos para acceder a esta página.']);
+    }
+
+    protected function getUserFactory($role)
+    {
+        switch ($role) {
+            case UserRole::CLIENT:
+                return new ClientUserFactory();
+            case UserRole::ORGANIZER:
+                return new OrganizerUserFactory();
+        }
     }
 }
