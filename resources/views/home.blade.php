@@ -2,6 +2,9 @@
 @section('title')
     <title>Sistema de Reserva de Tickets - Siret</title>
 @endsection
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/home/style.css') }}">
+@endsection
 @section('content')
     <div class="dashboard">
         <section class="carrusel">
@@ -20,31 +23,33 @@
         <section class="cards-section">
             <div class="cards">
                 @foreach ($shows as $show)
-                    <article class="card">
-                        <div class="card_preview">
-                            <img src="{{ $show->image->path }}" alt="Cita a Ciegas">
-                        </div>
-                        <div class="card_content">
-                            <h3 class="card_title">
-                                <strong>{{ $show->title }}</strong>
-                            </h3>
-                            <div class="card_address">
-                                <i class="fa-solid fa-calendar"></i>{{\Carbon\Carbon::parse($show->start_date)->format('l d M. - ') . \Carbon\Carbon::parse($show->start_time)->format('h:i a')}}
+                    <a href="{{ route('show', $show) }}">
+                        <article class="card">
+                            <div class="card_preview">
+                                <img src="{{ $show->image->path }}" alt="Cita a Ciegas">
                             </div>
-                            <div class="card_bottom">
-                                <div class="card_properties">
-                                    <small>Desde</small>
-                                    <b>S/</b>
-                                    <b>{{ $show->seatAreaPrices->min('price') }}</b>
+                            <div class="card_content">
+                                <h3 class="card_title">
+                                    <strong>{{ $show->title }}</strong>
+                                </h3>
+                                <div class="card_address">
+                                    <i class="fa-solid fa-calendar"></i>{{\Carbon\Carbon::parse($show->start_date)->format('l d M. - ') . \Carbon\Carbon::parse($show->start_time)->format('h:i a')}}
                                 </div>
-                                <div>
-                                    <button class="card_btn" type="submit">
-                                        Comprar
-                                    </button>
+                                <div class="card_bottom">
+                                    <div class="card_properties">
+                                        <small>Desde</small>
+                                        <b>S/</b>
+                                        <b>{{ $show->seatAreaPrices->min('price') }}</b>
+                                    </div>
+                                    <div>
+                                        <button class="card_btn" type="submit">
+                                            Comprar
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
+                        </article>
+                    </a>
                 @endforeach
                 {{-- <article class="card">
                     <div class="card_preview">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShowController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/show/{show}', [HomeController::class, 'showShow'])->name('show');
 
 //Auth
 Route::get('/register-form/{role}', [RegisterController::class, 'showRegisterForm'])
@@ -31,3 +34,6 @@ Route::post('/store-cliente', [RegisterController::class, 'storeUserClient'])->n
 Route::get('/reestablecer-contrasena', [RegisterController::class, 'resetPassword'])->name('resetPassword');
 Route::post('/cambiar-contrasena', [RegisterController::class, 'changePassword'])->name('changePassword');
 Route::put('/actualizar-contrasena', [RegisterController::class, 'updatePassword'])->name('updatePassword');
+
+//Shows
+Route::resource('shows', ShowController::class)->only(['index', 'show'])->names('shows');

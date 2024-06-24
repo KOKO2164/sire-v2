@@ -12,4 +12,9 @@ class HomeController extends Controller
         $shows = Show::all();
         return view('home', compact('shows'));
     }
+
+    public function showShow(Show $show)
+    {
+        return view('shows.show', compact('show'));
+    }
 }

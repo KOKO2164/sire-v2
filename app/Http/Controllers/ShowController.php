@@ -38,7 +38,7 @@ class ShowController extends Controller
      */
     public function show(Show $show)
     {
-        //
+        return view('shows.show', compact('show'));
     }
 
     /**
