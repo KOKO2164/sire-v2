@@ -10,13 +10,13 @@
         <section class="carrusel">
             <div class="slides">
                 <div class="slide slide-1">
-                    <img src="{{ asset('img/home/carousel/c1.png') }}" alt="" />
+                    <img src="{{ asset('img/shows/carousel/c1.png') }}" alt="" />
                 </div>
                 <div class="slide slide-2">
-                    <img src="{{ asset('img/home/carousel/c2.png') }}" alt="" />
+                    <img src="{{ asset('img/shows/carousel/c2.png') }}" alt="" />
                 </div>
                 <div class="slide slide-3">
-                    <img src="{{ asset('img/home/carousel/c3.png') }}" alt="" />
+                    <img src="{{ asset('img/shows/carousel/c3.png') }}" alt="" />
                 </div>
             </div>
         </section>

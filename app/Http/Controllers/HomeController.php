@@ -15,6 +15,6 @@ class HomeController extends Controller
 
     public function showShow(Show $show)
     {
-        return view('shows.show', compact('show'));
+        return view('compras.user_inf', compact('show'));
     }
 }

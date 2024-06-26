@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CompraController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ShowController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,5 +36,9 @@ Route::get('/reestablecer-contrasena', [RegisterController::class, 'resetPasswor
 Route::post('/cambiar-contrasena', [RegisterController::class, 'changePassword'])->name('changePassword');
 Route::put('/actualizar-contrasena', [RegisterController::class, 'updatePassword'])->name('updatePassword');
 
-//Shows
-Route::resource('shows', ShowController::class)->only(['index', 'show'])->names('shows');
+//User
+Route::put('/show/{show}/actualizar-usuario', [UserController::class, 'update'])->name('updateUser');
+
+//Compra
+Route::get('/show/{show}/seleccion-tickets', [CompraController::class, 'ticketSelection'])->name('ticketSelection');
+Route::post('/show/{show}/seleccion-asientos', [CompraController::class, 'seatSelection'])->name('seatSelection');
