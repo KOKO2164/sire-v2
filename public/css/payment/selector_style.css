@@ -6,7 +6,7 @@ body {
     font-size: 16px;
     background-color: #d04141;
     padding-bottom: 200px;
-    overflow: hidden;   
+    overflow: hidden;
 
 }
 
@@ -183,7 +183,7 @@ body {
     background-color: #d2d3d5;
     padding: 25px 100px 25px 100px;
     height: 62vh;
-    width: 90vh;    
+    width: 90vh;
     border-radius: 25px;
 }
 
@@ -212,7 +212,7 @@ form{
     position: relative;
     padding-left: 22px;
     height: 40px;
-    margin: 0;    
+    margin: 0;
 }
 
 .usuario_info form .info_group label.info_user{
@@ -249,7 +249,7 @@ form{
     background-color: #d2d3d5;
     padding: 25px;
     height: 65vh;
-    width: 110vh;    
+    width: 110vh;
     border-radius: 25px;
 }
 
@@ -438,7 +438,7 @@ img{
     align-items: center;
     padding: 25px 45px 25px 25px;
     height: 78vh;
-    width: 115vh;    
+    width: 115vh;
     border-radius: 25px;
 }
 
@@ -592,8 +592,8 @@ img{
 .container_metodo_pago{
     background-color: #d2d3d5;
     padding: 25px;
-    height: 65vh;
-    width: 110vh;    
+    height: 75vh;
+    width: 110vh;
     border-radius: 25px;
 }
 .tittle_metodo_pago{
@@ -607,7 +607,7 @@ img{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 50vh; 
+    height: 60vh;
     border: #000 solid 1px;
 }
 .red_important{
@@ -621,14 +621,11 @@ img{
 
 .campos_pay {
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 40px;
-    margin-left: 60px;
 }
 
 .mxy, .input_pay, .input_pay_date {
     display: block;
-}   
+}
 
 .campos_pay > div {
     width: 50%;
@@ -641,12 +638,17 @@ img{
 }
 
 .input_pay, .input_pay1 {
-    height: 40px; 
-    font-size: 16px; 
-    padding: 0 10px; 
+    height: 70px;
+    font-size: 16px;
+    padding: 0 10px;
     border: 1px solid #868585;
     box-sizing: border-box;
 }
 .input_pay1{
     padding: 0 42px;
+}
+
+.qrkoko{
+    margin-top: 20px;
+
 }
