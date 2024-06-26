@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 @section('title')
     <title>Registrarse</title>
 @endsection
@@ -7,7 +7,7 @@
         <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="title">
-                <img src="{{asset('img/img_logo.png')}}" alt="Logo">
+                <img src="{{asset('img/img_logo.png')}}" alt="Logo" id="user">
                 <h2>CREAR CUENTA</h2>
             </div>
             <div class="classinput">
@@ -32,7 +32,7 @@
             </div>
             <div class="btns">
                 <button type="submit" class="btn_registro_c">REGISTRARSE</button>
-                <a href="" class="btn_iniciar_c" id="btn_iniciar">INICIAR SESIÓN</a>
+                <button type="button" id="btn_iniciar_c"><a href="{{route('show-login')}}">INICIAR SESIÓN</a></button>
             </div>
         </form>
     </div>

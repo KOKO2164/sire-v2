@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/auth/style.css') }}">
 </head>
 <body>
-    @include('layouts.navbar')
+{{--     @include('layouts.navbar') --}}
     @yield('content')
 </body>
 </html>

@@ -6,7 +6,7 @@ body {
     font-size: 16px;
     background-color: #d04141;
     padding-bottom: 200px;
-    overflow-x: hidden;   
+    overflow-x: hidden;
 }
 
 * {
@@ -226,7 +226,7 @@ body {
     align-items: center;
     height: 100vh;
     padding: 1rem;
-    margin-top: 160px;
+    margin-top: 70vh;
     font-size: 14px;
 }
 
@@ -274,6 +274,7 @@ body {
     gap: 1.5rem;
     justify-content: center;
     margin-top: 1rem;
+    margin-bottom: 20rem;
 }
 
 .card_content {

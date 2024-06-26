@@ -11,7 +11,7 @@
                             Inicio
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="#nosotros" title="Nosotros">
                             Nosotros
                         </a>
@@ -25,7 +25,7 @@
                         <a href="#contacto" title="Contacto">
                             Contacto
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
         </div>

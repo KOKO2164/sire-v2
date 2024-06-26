@@ -28,7 +28,7 @@
                 <a href="{{ route('resetPassword') }}">Olvidé mi contraseña</a>
             </div>
             <div class="btns">
-                <button type="button" class="btn_registro_i" id="btn_registro">REGISTRARSE</button>
+                <button type="button" class="btn_registro_i" id="btn_registro"><a href="{{route('show-register','client')}}">REGISTRARSE</a></button>
                 <button type="submit" class="btn_iniciar_i">INICIAR SESIÓN</button>
             </div>
         </form>
