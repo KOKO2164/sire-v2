@@ -42,3 +42,4 @@ Route::put('/show/{show}/actualizar-usuario', [UserController::class, 'update'])
 //Compra
 Route::get('/show/{show}/seleccion-tickets', [CompraController::class, 'ticketSelection'])->name('ticketSelection');
 Route::post('/show/{show}/seleccion-asientos', [CompraController::class, 'seatSelection'])->name('seatSelection');
+Route::post('/show/{show}/pagar', [CompraController::class, 'pagar'])->name('pagar');

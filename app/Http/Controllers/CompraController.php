@@ -14,16 +14,16 @@ class CompraController extends Controller
     }
 
     public function seatSelection(Show $show, Request $request)
-    {   
+    {
         Log::info($request->all());
         try {
             $request->validate([
                 'tickets' => 'required|array',
                 'tickets.*' => 'nullable|numeric',
             ]);
-    
+
             $tickets = $request->tickets;
-    
+
             return view('compras.seat_selection', compact('show', 'tickets'));
         } catch (\Exception $e) {
             Log::error($e->getMessage());
@@ -31,8 +31,25 @@ class CompraController extends Controller
         }
     }
 
-    public function seatSelected(Show $show, Request $request)
+    public function pagar(Show $show, Request $request)
     {
-        
+        Log::info($request->all());
+        try {
+            $request->validate([
+                'seatNumber' => 'required|string',
+            ]);
+
+            $seats = explode(',', $request->seatNumber);
+            Log::info($seats);
+
+            return view('compras.payment', compact('show', 'seats'));
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return back()->with('error', 'Error al seleccionar los asientos');
+        }
+    }
+
+    public function reservar(Show $show, Request $request)
+    {
     }
 }

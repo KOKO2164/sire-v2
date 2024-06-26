@@ -17,13 +17,16 @@
                     <div class="tittle_funcion">
                         <strong>{{ $show->title }}</strong>
                     </div>
-                    <div class="seat_count">
-                        <b>Asiento(s):</b>
-                        <input type="text" name="seatNumber" id="seatNumber">
-                    </div>
-                    <button class="primary" type="submit">
-                        Reservar
-                    </button>
+                    <form action="{{ route('pagar', $show) }}" method="POST">
+                        @csrf
+                        <div class="seat_count">
+                            <b>Asiento(s):</b>
+                            <input type="text" name="seatNumber" id="seatNumber">
+                        </div>
+                        <button class="primary" type="submit">
+                            Reservar
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -44,16 +47,17 @@
                         <div class="chair">
                             @php
                                 $cont = 1;
+                                $rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
                             @endphp
-                            @for ($j = 1; $j <= 9; $j++)
+                            @for ($j = 0; $j < 9; $j++)
                                 <div class="row">
                                     @for ($i = 1; $i <= 12; $i++)
                                         @if ($cont <= 9)
-                                            <li class="seat">00{{ $cont }}</li>
+                                            <li class="seat" data-row="{{ $rows[$j] }}">00{{ $cont }}</li>
                                         @elseif ($cont <= 99)
-                                            <li class="seat">0{{ $cont }}</li>
+                                            <li class="seat" data-row="{{ $rows[$j] }}">0{{ $cont }}</li>
                                         @else
-                                            <li class="seat">{{ $cont }}</li>
+                                            <li class="seat" data-row="{{ $rows[$j] }}">{{ $cont }}</li>
                                         @endif
                                         @php
                                             $cont++;
@@ -64,15 +68,9 @@
                         </div>
                     </div>
                     <div class="alfabe">
-                        <span class="margin_span">A</span>
-                        <span class="margin_span">B</span>
-                        <span class="margin_span">C</span>
-                        <span class="margin_span">D</span>
-                        <span class="margin_span">E</span>
-                        <span class="margin_span">F</span>
-                        <span class="margin_span">G</span>
-                        <span class="margin_span">H</span>
-                        <span class="margin_span">I</span>
+                        @foreach ($rows as $row)
+                            <span class="margin_span{{ $loop->index }}">{{ $row }}</span>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -89,16 +87,13 @@
         });
         
         function seatSelected(seat) {
-            $.ajax({
-                url: '{{ route('seatSelection', $show) }}',
-                type: 'POST',
-                data: {
-                    seats: seat.textContent
-                },
-                success: function(response) {
-                    console.log(response);
-                }
-            });
+            const row = seat.getAttribute('data-row');
+            const seatInfo = `${row}${seat.innerText}`;
+            if (seatNumber.value.length === 0) {
+                seatNumber.value += seatInfo;
+            } else {
+                seatNumber.value += seatNumber.value.includes(seatInfo) ? '' : `,${seatInfo}`;
+            }
         }
     </script>
 @endsection
