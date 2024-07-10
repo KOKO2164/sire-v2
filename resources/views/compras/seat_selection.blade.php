@@ -34,7 +34,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="container_chair_span">
+                                    <div class="container_chair_span mb-3">
                                         <div class="contairner_chair">
                                             <div class="chair">
                                                 @php
