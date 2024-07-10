@@ -36,7 +36,7 @@
                                                     </div>
                                                     <div class="col-lg-3 col-md-4 d-flex justify-content-end">
                                                         <input type="number" name="tickets[{{ $index }}]"
-                                                            class="form-control float-right">
+                                                            class="form-control float-right" value="0">
                                                     </div>
                                                 </div>
                                             </div>

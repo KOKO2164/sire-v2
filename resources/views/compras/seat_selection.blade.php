@@ -46,7 +46,7 @@
                                                         @for ($i = 1; $i <= 9; $i++)
                                                             @if ($cont <= 9)
                                                                 <li class="seat" data-row="{{ $rows[$j] }}">
-                                                                    00{{ $cont }}</li>
+                                                                    0{{ $cont }}</li>
                                                             @elseif ($cont <= 99)
                                                                 <li class="seat" data-row="{{ $rows[$j] }}">
                                                                     0{{ $cont }}</li>
@@ -76,15 +76,26 @@
             </div>
         </div>
     </section>
+@endsection
+@section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        const seats = document.querySelectorAll('.seat');
-        seats.forEach(seat => {
-            seat.addEventListener('click', () => {
-                seat.classList.toggle('selected');
-                seatSelected(seat);
+        $(document).ready(function() {
+            const totalTickets = $('#tickets').val();
+            const seats = document.querySelectorAll('.seat');
+            let count = 0;
+            seats.forEach(seat => {
+                seat.addEventListener('click', () => {
+                    if (count < totalTickets) {
+                        seat.classList.toggle('selected');
+                        seatSelected(seat);
+                        count = document.querySelectorAll('.selected').length;
+                    } else {
+                        alert('Solo puedes seleccionar ' + totalTickets + ' asientos');
+                    }
+                });
             });
         });
 

@@ -6,6 +6,10 @@
             @csrf
             <div class="row">
                 <div class="col-3 mt-2">
+                    <input type="number" name="ticket0" value="{{ $tickets[0] ?? 0}}" hidden>
+                    <input type="number" name="ticket1" value="{{ $tickets[1] ?? 0}}" hidden>
+                    <input type="number" name="ticket2" value="{{ $tickets[2] ?? 0}}" hidden>
+                    <input type="number" name="tickets" id="tickets" value="{{ $tickets[0] ?? 0 + $tickets[1] ?? 0 + $tickets[2] ?? 0 }}" hidden>
                     <label>Asiento(s):</label>
                 </div>
                 <div class="col-4">

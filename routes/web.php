@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PayController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,3 +44,6 @@ Route::put('/show/{slug}/actualizar-usuario', [UserController::class, 'update'])
 Route::get('/show/{slug}/seleccion-tickets', [CompraController::class, 'ticketSelection'])->name('ticketSelection');
 Route::post('/show/{slug}/seleccion-asientos', [CompraController::class, 'seatSelection'])->name('seatSelection');
 Route::post('/show/{slug}/pagar', [CompraController::class, 'pagar'])->name('pagar');
+
+//Paypal
+Route::post('/show/{slug}/paypal', [PayController::class, 'pagar'])->name('paypal');
