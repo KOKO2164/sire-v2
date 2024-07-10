@@ -15,6 +15,7 @@
             background-color: #d04141;
         }
     </style>
+    @yield('css')
 </head>
 
 <body>

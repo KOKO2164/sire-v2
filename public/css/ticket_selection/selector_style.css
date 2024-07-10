@@ -493,6 +493,7 @@ img{
     align-items: center;
     flex-direction: row;
     gap: 10px;
+    width: 100%;
 }
 
 .chair{
@@ -503,7 +504,7 @@ img{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 40vh;
+    margin-right: 24vh;
 }
 
 .chair .row{
@@ -541,50 +542,39 @@ img{
     color: #000;
 }
 
+
 .chair .row li:nth-child(1) {
-    transform: rotate(35deg) translate(45px, 30px);
+    transform: rotate(20deg) translate(50px, 40px);
 }
 
 .chair .row li:nth-child(2) {
-    transform: rotate(30deg) translate(60px, 40px);
+    transform: rotate(15deg) translate(65px, 50px);
 }
 
 .chair .row li:nth-child(3) {
-    transform: rotate(25deg) translate(75px, 50px);
+    transform: rotate(10deg) translate(80px, 60px);
 }
 
 .chair .row li:nth-child(4) {
-    transform: rotate(20deg) translate(90px, 60px);
+    transform: rotate(5deg) translate(95px, 70px);
 }
 
 .chair .row li:nth-child(5) {
-    transform: rotate(15deg) translate(105px, 70px);
+    transform: rotate(0deg) translate(110px, 80px);
 }
 
 .chair .row li:nth-child(6) {
-    transform: rotate(10deg) translate(120px, 80px);
+    transform: rotate(-5deg) translate(125px, 90px);
 }
 
 .chair .row li:nth-child(7) {
-    transform: rotate(5deg) translate(135px, 90px);
+    transform: rotate(-10deg) translate(140px, 100px);
 }
 
 .chair .row li:nth-child(8) {
-    transform: rotate(0deg) translate(150px, 100px);
+    transform: rotate(-15deg) translate(155px, 110px);
 }
 
 .chair .row li:nth-child(9) {
-    transform: rotate(-5deg) translate(165px, 110px);
-}
-
-.chair .row li:nth-child(10) {
-    transform: rotate(-10deg) translate(180px, 120px);
-}
-
-.chair .row li:nth-child(11) {
-    transform: rotate(-15deg) translate(195px, 130px);
-}
-
-.chair .row li:nth-child(12) {
-    transform: rotate(-20deg) translate(210px, 140px);
+    transform: rotate(-20deg) translate(170px, 120px);
 }

@@ -2,49 +2,55 @@
 @section('title')
     <title>{{ $show->title }}</title>
 @endsection
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/ticket_selection/selector_style.css') }}">
-@endsection
 @section('content')
-    <section class="row">
-        @include('layouts.left-container')
-        <div class="container_right">
-            <div class="container_tittle">
-                02. ENTRADAS
+    <section class="container mt-3">
+        <div class="row">
+            <div class="col-6">
+                @include('layouts.left-container')
             </div>
-            <div class="container_entrada_compra">
-                <div class="tipo_boletos">
-                    <div class="tittle_boletos">
-                        <label>BOLETOS</label>
-                    </div>
-                    <div class="row">
-                        <div class="butaca">
-                            <img src="{{ asset('img/shows/butaca_teatro.jpg') }}" alt="butaca_teatro">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                02. ENTRADAS
+                            </div>
                         </div>
-                        <div class="butaca_info">
-                            <form action="{{ route('seatSelection', ['slug' => $show->slug]) }}" method="POST" id="cant-seat-area">
-                                @csrf
-                                @foreach ($show->seatAreaPrices as $index => $seatAreaPrice)
-                                    <div class="precio_butaca">
-                                        <div class="precio_detalle1">
-                                            <h2>{{ $seatAreaPrice->seatArea->name }}</h2>
-                                            <h5>valor: S/{{ formateadorMoneda($seatAreaPrice->price) }}</h5>
-                                        </div>
-                                        <div class="precio_detalle2">
-                                            <div class="compra_combobox">
-                                                <input type="number" name="tickets[{{ $index }}]">
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title text-center">
+                                    <h5>Selecciona tus entradas</h5>
+                                </div>
+                                @if (Auth::user())
+                                    <form action="{{ route('seatSelection', ['slug' => $show->slug]) }}" method="POST"
+                                        id="cant-seat-area">
+                                        @csrf
+                                        @foreach ($show->seatAreaPrices as $index => $seatAreaPrice)
+                                            <div class="bg-light my-3">
+                                                <div class="row">
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <h6>{{ $seatAreaPrice->seatArea->name }}</h6>
+                                                        <strong>S/{{ number_format($seatAreaPrice->price, 2) }}</strong>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-4 d-flex justify-content-end">
+                                                        <input type="number" name="tickets[{{ $index }}]"
+                                                            class="form-control float-right">
+                                                    </div>
+                                                </div>
                                             </div>
+                                        @endforeach
+                                        <div class="text-center">
+                                            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">VOLVER</a>
+                                            <button form="cant-seat-area" type="submit" class="btn btn-success">CONTINUAR</button>
                                         </div>
-                                    </div>
-                                @endforeach
-                            </form>
+                                    </form>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="btns_entrada_boletos">
-                <a href="{{ url()->previous() }}" class="btn_boletos1">VOLVER</a>
-                <button form="cant-seat-area" type="submit" class="btn_boletos2">CONTINUAR</button>
             </div>
         </div>
     </section>
