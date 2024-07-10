@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/ticket_selection/selector_style.css') }}">
 @endsection
 @section('content')
-    <section class="container_principal_seat_selector">
+    <section class="row">
         @include('layouts.left-container')
         <div class="container_right">
             <div class="container_tittle">
@@ -22,7 +22,7 @@
                             <img src="{{ asset('img/shows/butaca_teatro.jpg') }}" alt="butaca_teatro">
                         </div>
                         <div class="butaca_info">
-                            <form action="{{ route('seatSelection', $show) }}" method="POST" id="cant-seat-area">
+                            <form action="{{ route('seatSelection', ['slug' => $show->slug]) }}" method="POST" id="cant-seat-area">
                                 @csrf
                                 @foreach ($show->seatAreaPrices as $index => $seatAreaPrice)
                                     <div class="precio_butaca">

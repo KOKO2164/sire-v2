@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    public function update(Show $show, Request $request)
-    {   
+    public function update($slug, Request $request)
+    {
+        $show = Show::where('slug', $slug)->firstOrFail();
+
         $request->validate([
             'phone' => 'required|numeric',
             'dni' => 'required|numeric',
@@ -20,6 +22,6 @@ class UserController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('ticketSelection', $show);
+        return redirect()->route('ticketSelection', ['slug' => $show->slug]);
     }
 }

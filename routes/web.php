@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 //Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/show/{show}', [HomeController::class, 'showShow'])->name('show');
+Route::get('/show/{slug}', [HomeController::class, 'showShow'])->name('show');
 
 //Auth
 Route::get('/register-form/{role}', [RegisterController::class, 'showRegisterForm'])
@@ -37,9 +37,9 @@ Route::post('/cambiar-contrasena', [RegisterController::class, 'changePassword']
 Route::put('/actualizar-contrasena', [RegisterController::class, 'updatePassword'])->name('updatePassword');
 
 //User
-Route::put('/show/{show}/actualizar-usuario', [UserController::class, 'update'])->name('updateUser');
+Route::put('/show/{slug}/actualizar-usuario', [UserController::class, 'update'])->name('updateUser');
 
 //Compra
-Route::get('/show/{show}/seleccion-tickets', [CompraController::class, 'ticketSelection'])->name('ticketSelection');
-Route::post('/show/{show}/seleccion-asientos', [CompraController::class, 'seatSelection'])->name('seatSelection');
-Route::post('/show/{show}/pagar', [CompraController::class, 'pagar'])->name('pagar');
+Route::get('/show/{slug}/seleccion-tickets', [CompraController::class, 'ticketSelection'])->name('ticketSelection');
+Route::post('/show/{slug}/seleccion-asientos', [CompraController::class, 'seatSelection'])->name('seatSelection');
+Route::post('/show/{slug}/pagar', [CompraController::class, 'pagar'])->name('pagar');

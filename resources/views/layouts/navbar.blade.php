@@ -1,50 +1,33 @@
-<header class="header">
-    <div class="menu_wrapper">
-        <div class="menu_bar">
-            <a href="{{ route('home') }}" title="Home" aria-label="home" class="logo">
-                <img src="{{ asset('img/siret_home.png') }}" alt="siret_home">
-            </a>
-            <nav>
-                <ul class="nav hide">
-                    <li>
-                        <a href="{{ route('home') }}" title="Inicio">
-                            Inicio
-                        </a>
-                    </li>
-                    {{-- <li>
-                        <a href="#nosotros" title="Nosotros">
-                            Nosotros
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#eventos" title="Eventos">
-                            Eventos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#contacto" title="Contacto">
-                            Contacto
-                        </a>
-                    </li> --}}
-                </ul>
-            </nav>
+<nav class="navbar navbar-expand-lg" style="background: white !important">
+    <div class="container">
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <img src="{{ asset('img/siret_home.png') }}" alt="siret_home" width="50" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                @if (Auth::check())
+                    <p class="nav-link me-3 mt-2">{{ Auth::user()->name }} </p>
+                    <a href="{{ route('logout') }}" title="" class="nav-link mt-2">
+                        Cerrar Sesión
+                    </a>
+                @else
+                    <a href="{{ route('show-login') }}" title="" class="nav-link me-3 mt-2">
+                        Iniciar Sesión
+                    </a>
+                    <a href="{{ route('show-register', 'client') }}" title="" class="nav-link mt-2">
+                        Registrarse
+                    </a>
+                @endif
+            </div>
         </div>
-        @if (Auth::check())
-            <p>{{ Auth::user()->name }}</p>
-            <div class="action-buttons">
-                <a href="{{ route('logout') }}" title="" class="primary">
-                    Cerrar Sesión
-                </a>
-            </div>
-        @else
-            <div class="action-buttons hide">
-                <a href="{{ route('show-login') }}" title="" class="primary">
-                    Iniciar Sesión
-                </a>
-                <a href="{{ route('show-register', 'client') }}" title="" class="secondary">
-                    Registrarse
-                </a>
-            </div>
-        @endif
     </div>
-</header>
+</nav>

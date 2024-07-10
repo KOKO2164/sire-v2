@@ -8,14 +8,15 @@ use Illuminate\Support\Facades\Log;
 
 class CompraController extends Controller
 {
-    public function ticketSelection(Show $show)
+    public function ticketSelection($slug)
     {
+        $show = Show::where('slug', $slug)->firstOrFail();
         return view('compras.ticket_selection', compact('show'));
     }
 
-    public function seatSelection(Show $show, Request $request)
+    public function seatSelection($slug, Request $request)
     {
-        Log::info($request->all());
+        $show = Show::where('slug', $slug)->firstOrFail();
         try {
             $request->validate([
                 'tickets' => 'required|array',
@@ -31,9 +32,9 @@ class CompraController extends Controller
         }
     }
 
-    public function pagar(Show $show, Request $request)
+    public function pagar($slug, Request $request)
     {
-        Log::info($request->all());
+        $show = Show::where('slug', $slug)->firstOrFail();
         try {
             $request->validate([
                 'seatNumber' => 'required|string',

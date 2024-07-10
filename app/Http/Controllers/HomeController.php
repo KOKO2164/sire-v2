@@ -13,8 +13,9 @@ class HomeController extends Controller
         return view('home', compact('shows'));
     }
 
-    public function showShow(Show $show)
+    public function showShow($slug)
     {
-        return view('compras.user_inf', compact('show'));
+        $show = Show::where('slug', $slug)->firstOrFail();
+        return view('compras.user_inf', ['show' => $show]);
     }
 }

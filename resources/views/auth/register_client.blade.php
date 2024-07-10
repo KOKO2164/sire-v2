@@ -1,39 +1,76 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 @section('title')
     <title>Registrarse</title>
 @endsection
 @section('content')
-    <div class="container">
-        <form action="{{ route('register') }}" method="POST">
-            @csrf
-            <div class="title">
-                <img src="{{asset('img/img_logo.png')}}" alt="Logo" id="user">
-                <h2>CREAR CUENTA</h2>
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <div class="mb-md-3 mt-md-4 pb-5">
+                            <img src="{{ asset('img/img_logo.png') }}" alt="Logo" id="user" width="150"
+                                height="140">
+                            <h2 class="fw-bold mb-2 text-uppercase">CREAR CUENTA</h2>
+                            <form action="{{ route('register') }}" method="POST" id="form-register"
+                                class="needs-validation" novalidate>
+                                @csrf
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="name" class="form-control" id="floatingName" required>
+                                    <label for="floatingName">Nombre</label>
+                                    <div class="invalid-feedback">Por favor ingrese su nombre.</div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="email" name="email" class="form-control" id="floatingEmail" required>
+                                    <label for="floatingEmail">Correo</label>
+                                    <div class="invalid-feedback">Por favor ingrese su correo electrónico.</div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" name="password" class="form-control" id="floatingPassword"
+                                        required>
+                                    <label for="floatingPassword">Contraseña</label>
+                                    <div class="invalid-feedback">Por favor ingrese su contraseña.</div>
+                                </div>
+                                <input type="text" name="role" value="2" hidden>
+                            </form>
+                            <div class="terms">
+                                <input type="checkbox" id="acepto-terminos" name="acepto-terminos" required>
+                                <label for="acepto-terminos">Acepto los <a href="#">Términos y Condiciones</a></label>
+                                <p><a href="{{ route('show-register', 'organizer') }}">Crear cuenta de organizador</a></p>
+                            </div>
+                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-danger btn-lg px-5"
+                                type="submit" form="form-register">Registrarse</button>
+                        </div>
+                        <div>
+                            <p class="mb-0">¿Ya estás registrado? <a href="{{ route('show-login') }}"
+                                    class="text-black-50 fw-bold">Iniciar Sesión</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="classinput">
-                <input type="text" id="name" name="name" placeholder="Nombre" required>
-                @error('name')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-                <input type="email" id="email" name="email" placeholder="Email" required>
-                @error('email')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-                <input type="password" id="password" name="password" placeholder="Contraseña" required>
-                @error('password')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-                <input type="text" name="role" value="2" hidden>
-            </div>
-            <div class="terms">
-                <input type="checkbox" id="acepto-terminos" name="acepto-terminos" required>
-                <label for="acepto-terminos">Acepto los <a href="#">Términos y Condiciones</a></label>
-                <p><a href="{{ route('show-register', 'organizer') }}">Crear cuenta de organizador</a></p>
-            </div>
-            <div class="btns">
-                <button type="submit" class="btn_registro_c">REGISTRARSE</button>
-                <button type="button" id="btn_iniciar_c"><a href="{{route('show-login')}}">INICIAR SESIÓN</a></button>
-            </div>
-        </form>
+        </div>
     </div>
+@endsection
+@section('js')
+    <script type="module">
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
 @endsection
